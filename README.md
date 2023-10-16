@@ -26,8 +26,9 @@ To view database content select option [6] which display records.
 ![image](https://github.com/MaheshYTech/db/assets/53365208/f8604e45-d9ec-424f-b650-8fe6aebfa685)
 
 To run sql query select option [7]
+
 Query is 
- select * from stockfeb.txt where open >= 100 and open <= 105
+select * from stockfeb.txt where open >= 100 and open <= 105
  
 ![image](https://github.com/MaheshYTech/db/assets/53365208/781c87ca-1ab1-45a4-a419-f017eb6b24a5)
 
