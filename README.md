@@ -1,6 +1,9 @@
 Download db.7z
+
 create folder [db]
+
 extract files from download.7z into [db] folder
+
 which contain 3 files
 1. Database.exe
 2. stockfeb.txt
