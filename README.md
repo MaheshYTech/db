@@ -9,21 +9,25 @@ which contain 3 files
 1. Database.exe
 2. stockfeb.txt
 3. stockfeb.csv
+4. car.txt
+5. car.csv
 
-stockfeb.txt is sample file.
+stockfeb.txt and car.txt are sample files.
 
-   all three files should be in same foulder. Double Click on Database.exe
-   
+all  files should be in same foulder. Double Click on Database.exe
+
+first I narat about SQL.
+
 
    ![image](https://github.com/MaheshYTech/db/assets/53365208/089ae1dc-99b0-4a76-af57-5e8562c513f4)
 
 select option [2] . which open database.
 
-![image](https://github.com/MaheshYTech/db/assets/53365208/feebbc7c-e893-48ed-b2b7-18589b496e6c)
+![image](https://github.com/MaheshYTech/db/assets/53365208/a39dbb83-8ffb-4f81-a1ea-9a02af812490)
 
 if database available it shows Structure of Database
 
-![image](https://github.com/MaheshYTech/db/assets/53365208/7c1de96d-ed5c-4bc3-91c1-1b192ee08d3f)
+
 
 To view database content select option [6] which display records.
 
