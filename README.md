@@ -22,11 +22,15 @@ Double Click on [Database.exe]
 select option [2] . has to open database.
 
 ![image](https://github.com/MaheshYTech/db/assets/53365208/9ecbea9f-c76c-4539-a0d2-a880b1df9267)
-Now [car.txt] has been openend
+
 
 if database available it shows Structure of Database
 
 ![image](https://github.com/MaheshYTech/db/assets/53365208/68e00307-bc47-463b-bd7b-00228e2bad49)
+
+Now [car.txt] has been openend
+
+
 
 To view database content select option [6] which display records.
 ![image](https://github.com/MaheshYTech/db/assets/53365208/d396d5f8-0eca-4db2-94b3-fe32c8b00e31)
