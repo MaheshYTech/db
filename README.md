@@ -40,14 +40,19 @@ if database available it shows Structure of Database
 
 Now [car.txt] has been openend
 
-
-
 To view database content select option [6] which display records.
 ![image](https://github.com/MaheshYTech/db/assets/53365208/d396d5f8-0eca-4db2-94b3-fe32c8b00e31)
 
-To run sql query select option [7]
+To [IMPORT] csv file directly, select option [4]
+[4. Import From Files]
+
+![image](https://github.com/MaheshYTech/db/assets/53365208/50f00167-72aa-4c4a-93b1-0f09771e8a4e)
+
+
+To run [SQL QUERY] select option [7]
 
 Query is 
+select * from car.txt where cyly >= 4 and cyly <= 6
 select * from car.txt where cyly = 4
 
 ![image](https://github.com/MaheshYTech/db/assets/53365208/8e8ee260-bf3a-4879-b0ed-13965ea9a98f)
@@ -56,6 +61,9 @@ Query Result for above Query is
 ![image](https://github.com/MaheshYTech/db/assets/53365208/f94470d1-935a-4a49-9a40-6130e59de008)
 
 Delete Query
+delete from car.txt where cyly = 4 or cyly = 6
+delete from car.txt where cyly <= 6
+if you run below [query[
 delete from car.txt where cyly = 4
 
 ![image](https://github.com/MaheshYTech/db/assets/53365208/97cc90b9-3b07-4f24-9848-d449d82bef70)
