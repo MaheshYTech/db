@@ -24,7 +24,7 @@ Double Click on [Database.exe]
 
    ![image](https://github.com/MaheshYTech/db/assets/53365208/089ae1dc-99b0-4a76-af57-5e8562c513f4)
 
-For Create Database Select Option [1]
+For Create Database , Select Option [1]
 
 
 ![image](https://github.com/MaheshYTech/db/assets/53365208/b0d25db6-d3ba-4b4a-b60e-daa331944aa5)
