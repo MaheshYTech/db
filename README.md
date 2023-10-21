@@ -1,4 +1,4 @@
-for proper display of output, Window Screen Setting should be
+for proper output display, Window Screen Setting should be as follow, 
 
 ![image](https://github.com/MaheshYTech/db/assets/53365208/3c01f07d-d5aa-485a-af58-fe5a47e8f1af)
 
