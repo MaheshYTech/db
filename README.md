@@ -44,6 +44,7 @@ To view database content select option [6] which display records.
 ![image](https://github.com/MaheshYTech/db/assets/53365208/d396d5f8-0eca-4db2-94b3-fe32c8b00e31)
 
 To [IMPORT] csv file directly, select option [4]
+
 [4. Import From Files]
 
 ![image](https://github.com/MaheshYTech/db/assets/53365208/50f00167-72aa-4c4a-93b1-0f09771e8a4e)
