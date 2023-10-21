@@ -517,7 +517,7 @@ int deleteSqlRecords(MAIN *tmain) {
     }
 
     fclose(fp);
-    _getch();
+    //_getch();
     return deleted_rec;
 }
 
@@ -551,75 +551,90 @@ int getSqlType(char* sqlStr) {
 
 int startSql(int MODE, char* strSql) {
     //openDataBase(strSql, fileName);
-    getSqlStatement(sql);
-    int result = 0, i = 0, len = 0, wCount = 0;
-    char* strArr[] = { NULL }, * prevPoint = NULL;
-    //strcpy(sql, "select Car, MPG, Cyly, HP, Model ,  Origin from car.txt where Cyly = 8");
-    //strcpy(sql, "select * from car.txt where Cyly = 8");
-    result = getDataBaseFile(sql, fileName);
-    result = readDataBase(MODE, fileName);
-    if (result == NULL) {
-        printf("\n Error Opening File %s", fileName);
-        _getch();
-        return 0;
+    int result = 0, i = 0, len = 0, wCount = 0 , OK = 1;
+    char *prevPoint = NULL;
+    
+    sql[0] = NULL;
+
+    while (OK) {
+            char* strArr[] = { NULL };
+            sql[0] = NULL;
+
+            getSqlStatement(sql);
+            result = 0;
+            i = 0;
+            len = 0;
+            wCount = 0;
+
+            if (strlen(sql) == 0) {
+                printf("\n\n\n\n");
+                printf("\t\t");
+                break;
+            }
+
+            prevPoint = NULL;
+            //strcpy(sql, "select Car, MPG, Cyly, HP, Model ,  Origin from car.txt where Cyly = 8");
+            //strcpy(sql, "select * from car.txt where Cyly = 8");
+
+            result = getDataBaseFile(sql, fileName);
+            result = readDataBase(MODE, fileName);
+            if (result == NULL) {
+                printf("\n Error Opening File %s", fileName);
+                _getch();
+                break;
+                //return 0;
+            }
+
+            i = 0;
+            while (1) {
+                if (*(sql + i) != 32) {
+                    break;
+                }
+                i++;
+            }
+
+
+            int sqlType = getSqlType(sql);
+
+            if (sqlType == SELECT) {
+                result = getSelectField(sql);
+                if (result == NULL) {
+                    printf("\n Error in Select Fields");
+                    _getch();
+                    break;
+                    //return 0;
+                }
+                result = processWhere(sql);
+                if (result == NULL) {
+                    printf("\n Error in Where Fields");
+                    _getch();
+                    break;
+                    //return 1;
+                }
+                printHeaderQuery(seleFields);
+                printQueryResult(lmain, &dbmain);
+                if (seleFields) {
+                    free(seleFields);
+                    seleFields = NULL;
+                }
+                _getch();
+                //return 0;
+            }
+            else if (sqlType == DELETE) {
+                result = processWhere(sql + i);
+                int deleted_rec = deleteSqlRecords(lmain);
+                printf("\n\n\n\n");
+                printf("\t\t");
+                printf(" %d record has been deleted" , deleted_rec);
+                printf("\n\t\t  Press Any Key To Continue");
+                _getch();
+                deleted_rec = deleted_rec + 0;
+                //return 0;
+            }
+            else if (sqlType == UPDATE) {
+
+            }
     }
-
-    i = 0;
-    while (1) {
-        if (*(sql + i) != 32) {
-            break;
-        }
-        i++;
-    }
-
-
-    int sqlType = getSqlType(sql);
-
-    if (sqlType == SELECT) {
-        result = getSelectField(sql);
-        if (result == NULL) {
-            printf("\n Error in Select Fields");
-            _getch();
-            return 0;
-        }
-        result = processWhere(sql);
-        if (result == NULL) {
-            printf("\n Error in Where Fields");
-            _getch();
-            return 1;
-        }
-        printHeaderQuery(seleFields);
-        printQueryResult(lmain, &dbmain);
-        if (seleFields) {
-            free(seleFields);
-            seleFields = NULL;
-        }
-        _getch();
-        return 0;
-    }
-    else if (sqlType == DELETE) {
-        result = processWhere(sql + i);
-        int deleted_rec = deleteSqlRecords(lmain);
-        deleted_rec = deleted_rec + 0;
-        return 0;
-    }
-    else if (sqlType == UPDATE) {
-
-    }
-
-    //char* seleStr = strFind(sql + i, CHPTR "select");
-    //if (seleStr == NULL) {
-    //    char* deleteStr = strFind(sql + i, CHPTR "delete");
-    //    if (deleteStr != NULL) {
-    //        result = processWhere(sql + i);
-    //        int deleted_rec =  deleteSqlRecords(lmain);
-    //        deleted_rec = deleted_rec + 0;
-    //    }
-    //    return 0;
-    //}
-    //else {
-
-    //}
 }
 
 

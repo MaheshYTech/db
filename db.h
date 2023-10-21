@@ -303,13 +303,13 @@ void initSrcData(int len) {
     }
 }
 
-int splitStrForField(char* str) {
+int splitStrForField(char* str, char delimeter) {
     char* temp = str;
     char* prevPos = NULL;
     char* data = NULL;
 
     int i = 0 , findx = 0 , n = 0;
-    char DELIMETER = '|';
+    char DELIMETER = delimeter;
     char ch = 32;
 
     data = CHPTR calloc(1, dbmain.record_size + DATA_PAD);
@@ -326,7 +326,7 @@ int splitStrForField(char* str) {
             pasteDataToMem(data + dbmain.foffset[findx], dbmain.ftype[findx], srcData, dbmain.fwidth[findx]);
             n = 0;
             break;
-        }else if (ch == '|') {
+        }else if (ch == DELIMETER) {
             //*(str + i) = NULL;
             srcData[n] = NULL;
             pasteDataToMem(data + dbmain.foffset[findx], dbmain.ftype[findx], srcData, dbmain.fwidth[findx]);
@@ -355,8 +355,7 @@ int splitStrForField(char* str) {
 }
 
 void get_FileName(char* file_name, char *msg) {
-    system("cls");
-    printf("\n\n\n\n");
+    printf("\n\n");
     printf("\t\t\t\t");
     while (1) {
         fseek(stdin, 0, SEEK_END);
@@ -375,6 +374,8 @@ void importTextData() {
     char strLine[512] = { NULL };
     char* temp = NULL;
     char* data_read = NULL;
+    char strDelimeter[3] = { NULL };
+    char* delimeter_found = NULL;
     int rec_count = 0;
 
     //strcpy(fileName, "stockfeb.txt");
@@ -383,8 +384,27 @@ void importTextData() {
     //strcpy(fileName, "stockfeb.txt");
     //strcpy(csv_file_name, "stockfeb.csv");
 
+    char delimeter = (char) NULL;
+
+    system("cls");
+    printf("\n\n");
+    printf("\t\t\t\t");
+    printf("***** Import CSV Files ******");
     get_FileName(csv_file_name , CHPTR " Source ");
     get_FileName(fileName, CHPTR " Destination ");
+
+    while (1) {
+        printf("\n\n");
+        printf("\t\t\t\t");
+        fseek(stdin, 0, SEEK_END);
+        printf("Delimeter Type [ | ]   or  [ , ] :: ");
+        scanf("%c", &delimeter);
+        if ((delimeter == '|')  || (delimeter == ',')) {
+            break;
+        }
+    }
+    strDelimeter[0] = delimeter;
+    strDelimeter[1] = NULL;
 
     FILE *fp = fopen(fileName, "rb+");
     if (fp == NULL) {
@@ -438,12 +458,21 @@ void importTextData() {
                 *(temp + 0) = NULL;
                 *(temp + 1) = NULL;
             }
-            splitStrForField(strLine);
-            rec_count++;
+
+            delimeter_found = strstr(strLine, strDelimeter);
+            if (delimeter_found != NULL) {
+                splitStrForField(strLine, delimeter);
+                rec_count++;
+            }
             printf("\n");
         }
         i++;
     }
+
+
+    printf("\n\n");
+    printf("\t\t\t\t");
+    printf("\n %d Record has been updated " , rec_count);
 
     fseek(fp, 0, SEEK_SET);
     //lseek(ifd, 0, SEEK_SET);
@@ -459,6 +488,7 @@ void importTextData() {
 
     fseek(fp, 0, SEEK_SET);
     fseek(fp, sizeof(DB_MAIN) + (sizeof(FIELDS) * MAX_FIELD), SEEK_CUR);
+
 
     //lseek(ifd, 0, SEEK_SET);
     //lseek(ifd, sizeof(DB_MAIN) + (sizeof(FIELDS) * MAX_FIELD), SEEK_CUR);
@@ -486,6 +516,10 @@ void importTextData() {
 
     fclose(fp);
     fclose(fpCsv);
+
+    printf("\n\n");
+    printf("\t\t\t\t");
+    printf("\n  Press Any Key To Continue" );
 
     //close(ifd);
     //close(ifdCsv);
