@@ -4,6 +4,8 @@ Please Go Through
 
 You can create any type of DATABASE.
 
+Its only for learning purpose and you can use it has a [academic project].
+
 DATABASE  supports following [datas].
 
 1. Text
