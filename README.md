@@ -1,5 +1,6 @@
 Please Go Through
-Readme.pdf
+
+          Readme.pdf
 
 You can create any type of DATABASE.
 
@@ -15,10 +16,25 @@ DATABASE  supports following [datas].
 
 For SQL Query
 
+Only 
+1. SELECT
+2. DELETE
+   
+Query will work.
+
+1.  UPDATE
+2.  INSERT
+  
+   will implemented in next version.
+
+   
+
 For SELECT QUERY
+
 SELECT Filelds , For [ALL]  you have to put [*]
+
 For WHERE Condition
-Conditions
+
 Example ::
 select * from car.txt where cyly >= 4 and cyly <= 6
 
@@ -28,6 +44,8 @@ For DELETE QUERY
 Only WHERE Condition will be Implemented.
 
 Example ::
+
 delete from car.txt where cyly >= 4 
+
 delete from car.txt where cyly >= 4 and car <= 6
 
